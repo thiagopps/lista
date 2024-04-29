@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Cartas y Contador de Códigos</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f1e0e3; /* Suave color rosa claro */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            animation: fadeIn 0.5s;
+        }
+
+        h1 {
+            color: #4a4a4a;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #5c5c5c;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #e85a71;
+        }
+
+        .contador {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Lista de Cartas</h1>
+        <ul>
+            <li>1: Dulzura</li>
+            <li>2: Lunar</li>
+            <li>3: Amor</li>
+            <li>4: Crema</li>
+            <!-- Agrega más enlaces aquí si hay más cartas -->
+        </ul>
+        <div class="contador">
+            <p>Cantidad de cartas: <span id="contador">0</span></p>
+        </div>
+        <p><a href="/index.html" style="text-decoration: none; color: #e85a71; font-weight: bold;">Volver a enviar códigos</a></p>
+    </div>
+
+    <script>
+        // Función para actualizar el contador de códigos
+        function actualizarContador() {
+            var contadorElemento = document.getElementById("contador");
+            // Obtener el número de cartas disponibles y mostrarlo en el contador
+            contadorElemento.textContent = document.querySelectorAll("ul li").length;
+        }
+
+        // Llamar a la función de actualización del contador al cargar la página
+        window.onload = actualizarContador;
+    </script>
+</body>
+
+</html>
