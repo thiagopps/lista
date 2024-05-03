@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Cartas y Contador de Códigos</title>
+    <title>Lista de Cartas y de Imágenes</title>
     <style>
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -19,6 +19,10 @@
         }
 
         .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             width: 90%;
             max-width: 600px;
             background-color: #fff;
@@ -28,14 +32,23 @@
             animation: fadeIn 0.5s;
         }
 
+        .section {
+            flex: 1;
+            width: 100%;
+            margin-top: 20px;
+            border-top: 2px solid #e85a71; /* Línea divisoria */
+            padding-top: 20px;
+        }
+
         h1 {
             color: #4a4a4a;
+            margin-bottom: 10px;
         }
 
         ul {
             list-style-type: none;
             padding: 0;
-            margin-top: 20px;
+            margin: 0;
         }
 
         li {
@@ -57,6 +70,39 @@
             font-size: 20px;
         }
 
+        .list-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .list {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Alineación a la izquierda */
+            margin: 0;
+            padding-left: 20px; /* Espaciado a la izquierda */
+        }
+
+        .list p {
+            margin-bottom: 10px;
+            color: #5c5c5c; /* Color similar al de los enlaces */
+            transition: color 0.3s;
+        }
+
+        .list p:hover {
+            color: #e85a71; /* Cambio de color al pasar el cursor */
+        }
+
+        .list img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -66,31 +112,58 @@
 
 <body>
     <div class="container">
-        <h1>Lista de Cartas</h1>
-        <ul>
-            <li>1: Dulzura</li>
-            <li>2: Lunar</li>
-            <li>3: Amor</li>
-            <li>4: Crema</li>
-            <li>5: Helado</li>
-            <!-- Agrega más enlaces aquí si hay más cartas -->
-        </ul>
-        <div class="contador">
-            <p>Cantidad de cartas: <span id="contador">0</span></p>
+        <div class="section">
+            <h1>Lista de Cartas</h1>
+            <ul>
+                <li>1: Dulzura</li>
+                <li>2: Lunar</li>
+                <li>3: Amor</li>
+                <li>4: Crema</li>
+                <li>5: Helado</li>
+                <!-- Agrega más enlaces aquí si hay más cartas -->
+            </ul>
+            <div class="contador">
+                <p>Cantidad de cartas: <span id="contador-cartas">5</span></p>
+            </div>
+        </div>
+        <div class="section">
+            <h1>Lista de Imágenes</h1>
+            <div class="list-container">
+                <div class="list">
+                    <!-- Coloca los códigos de las imágenes aquí -->
+                    <p>1: Tren</p>
+                    <p>2: khe :v</p>
+                    <p>3: Lezama</p>
+                    <p>4: China</p>
+                </div>
+            </div>
+            <div class="contador">
+                <p>Cantidad de imágenes: <span id="contador-imagenes">1</span></p>
+            </div>
         </div>
         <p><a href="https://thiagopps.github.io/cartas/" style="text-decoration: none; color: #e85a71; font-weight: bold;">Volver a enviar códigos</a></p>
     </div>
 
     <script>
-        // Función para actualizar el contador de códigos
-        function actualizarContador() {
-            var contadorElemento = document.getElementById("contador");
+        // Función para actualizar el contador de cartas
+        function actualizarContadorCartas() {
+            var contadorCartas = document.getElementById("contador-cartas");
             // Obtener el número de cartas disponibles y mostrarlo en el contador
-            contadorElemento.textContent = document.querySelectorAll("ul li").length;
+            contadorCartas.textContent = document.querySelectorAll(".section:first-child ul li").length;
         }
 
-        // Llamar a la función de actualización del contador al cargar la página
-        window.onload = actualizarContador;
+        // Función para actualizar el contador de imágenes
+        function actualizarContadorImagenes() {
+            var contadorImagenes = document.getElementById("contador-imagenes");
+            // Obtener el número de imágenes disponibles y mostrarlo en el contador
+            contadorImagenes.textContent = document.querySelectorAll(".list p").length;
+        }
+
+        // Llamar a las funciones de actualización de contadores al cargar la página
+        window.onload = function() {
+            actualizarContadorCartas();
+            actualizarContadorImagenes();
+        };
     </script>
 </body>
 
